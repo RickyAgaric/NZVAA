@@ -3,7 +3,7 @@
 // @description    New Zealand Working Holiday Visa Apply Assistant
 // @version        1.0
 // @author         ricky.agaric
-// @namespace      http://rickyagaric.net
+// @namespace      https://github.com/RickyAgaric/NZVAA
 // @include        https://www.immigration.govt.nz/*
 // ==/UserScript==
 
