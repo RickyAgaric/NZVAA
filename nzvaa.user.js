@@ -7,14 +7,19 @@
 // @include        https://www.immigration.govt.nz/*
 // ==/UserScript==
 
-var reloadApplyPage = function() {
-  var applyBu = document.getElementById('ctl00_ContentPlaceHolder1_applyNowButton');
-  if (applyBu) {
-    applyBu.click();
-  } else {
-    console.log('Don't have candidate');
-  }
-  //setTimeout(reloadApplyPage, 500);
+function withQuery(callback) {
+	callback();
 };
 
-reloadApplyPage();
+function worker() {
+	var applyBu = document
+			.getElementById('ctl00_ContentPlaceHolder1_applyNowButton');
+	if (applyBu) {
+		applyBu.click();
+	} else {
+		console.log("Don't have candidate");
+	}
+	// setTimeout(reloadApplyPage, 500);
+};
+
+withQuery(worker);
