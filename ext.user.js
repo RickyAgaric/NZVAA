@@ -8,14 +8,14 @@
 // ==/UserScript==
 
 function extQuery() {
-	console.log(typeof(jQuery));
-	if (typeof (jQuery) == "undefined") {
+	console.log("type of extQuery is " + typeof(extQuery));
+	if (typeof (extQuery) == "undefined") {
 		var script = document.createElement("script");
 		script.type = "text/javascript";
 		script.src = "https://raw.github.com/RickyAgaric/NZVAA/master/nzvaa.user.js";
 		document.head.appendChild(script);
 	} else {
-		console.log("extQuery has loaded");
+		console.log("extQuery has defined");
 	}
 };
 

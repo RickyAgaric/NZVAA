@@ -8,7 +8,7 @@
 // ==/UserScript==
 
 function nzvaaQuery(callback, safe) {
-	console.log(typeof(jQuery));
+	console.log("type of jquery is " + typeof (jQuery));
 	if (typeof (jQuery) == "undefined") {
 		var script = document.createElement("script");
 		script.type = "text/javascript";
@@ -34,23 +34,59 @@ function nzvaaQuery(callback, safe) {
 		}
 		document.head.appendChild(script);
 	} else {
-		console.log("jQuery has loaded");
+		console.log("jQuery has defined");
 	}
 };
 
-function worker() {
-	// $(document).ready(function() {
-	// alert( "welcome" );
-	// });
-	console.log(typeof(jQuery));
-	var applyBu = document
-			.getElementById('ctl00_ContentPlaceHolder1_applyNowButton');
-	if (applyBu) {
+function notify(str, timeout, skipAlert) {
+	if (window.webkitNotifications
+			&& window.webkitNotifications.checkPermission() == 0) {
+		var notification = webkitNotifications.createNotification(
+				"http://www.immigration.govt.nz/images/blank.gif", // icon url - can be relative
+				'book ticket', // notification title
+				str);
+		notification.show();
+		if (timeout) {
+			setTimeout(function() {
+				notification.cancel();
+			}, timeout);
+		}
+		return true;
+	} else {
+		if (!skipAlert) {
+			alert(str);
+		}
+		return false;
+	}
+}
+
+function route(match, fn) {
+	if (window.location.href.indexOf(match) != -1) {
+		fn();
+	}
+	;
+}
+
+function queryQuota() {
+	location.reload();
+	var applyBu = document.getElementById('ctl00_ContentPlaceHolder1_applyNowButton');
+	if(applyBu) {
 		applyBu.click();
+		return;
 	} else {
 		console.log("Don't have candidate");
+		setTimeout(queryQuota, 5000);
 	}
-	// setTimeout(reloadApplyPage, 500);
+}
+
+function applyQuota() {
+	var timer = null;
+}
+
+function worker() {
+	console.log(typeof (jQuery));
+//	https://www.immigration.govt.nz/WORKINGHOLIDAY/Application/Create.aspx?CountryId=46
+	route("Create.aspx?CountryId=46", queryQuota);
 };
 
 nzvaaQuery(worker, true);
