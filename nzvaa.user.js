@@ -188,4 +188,27 @@ function worker() {
 	route("", applyQuota);
 };
 
-nzvaaQuery(worker($,window), true);
+nzvaaQuery(function($, window) {
+	//https://www.immigration.govt.nz/WORKINGHOLIDAY/Application/Create.aspx?CountryId=46
+	route("Create.aspx?CountryId=46", queryQuota);
+	
+	//Reference=965672
+	//https://www.immigration.govt.nz/WorkingHoliday/Wizard/Personal1.aspx?ApplicationId=965672&IndividualType=Primary&IndividualIndex=1
+	route("Personal1.aspx", fillPersonal1);
+	//https://www.immigration.govt.nz/WorkingHoliday/Wizard/Personal2.aspx?ApplicationId=965672&IndividualType=Primary&IndividualIndex=1
+	route("Personal2.aspx", fillPersonal2);
+	//https://www.immigration.govt.nz/WorkingHoliday/Wizard/Personal3.aspx?ApplicationId=965672&IndividualType=Primary&IndividualIndex=1
+	route("Personal3.aspx", fillPersonal3);
+	
+	//https://www.immigration.govt.nz/WorkingHoliday/Wizard/Medical1.aspx?ApplicationId=965672&IndividualType=Primary&IndividualIndex=1
+	route("Medical1.aspx", fillMedical1);
+	
+	//https://www.immigration.govt.nz/WorkingHoliday/Wizard/Character.aspx?ApplicationId=965672&IndividualType=Primary&IndividualIndex=1
+	route("Character.aspx", fillCharacter);
+	
+	//https://www.immigration.govt.nz/WorkingHoliday/Wizard/WorkingHolidaySpecific.aspx?ApplicationId=965672&IndividualType=Primary&IndividualIndex=1
+	route("WorkingHolidaySpecific.aspx", fillWorkingHolidaySpecific);
+	
+	//
+	route("", applyQuota);
+}, true);
