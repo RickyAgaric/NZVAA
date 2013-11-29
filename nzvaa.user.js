@@ -79,7 +79,7 @@ function queryQuota() {
 	}
 }
 
-function fillPersonal1() {
+function fillPersonal1($) {
 //	Personal
 	$("#ctl00_ContentPlaceHolder1_personDetails_familyNameTextBox").val("Lin");
 	$("#ctl00_ContentPlaceHolder1_personDetails_givenName1Textbox").val("Jie");
