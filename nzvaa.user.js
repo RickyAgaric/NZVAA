@@ -79,7 +79,7 @@ function queryQuota() {
 	}
 }
 
-function fillPersonal1($) {
+function fillPersonal1() {
 //	Personal
 	$("#ctl00_ContentPlaceHolder1_personDetails_familyNameTextBox").val("Lin");
 	$("#ctl00_ContentPlaceHolder1_personDetails_givenName1Textbox").val("Jie");
@@ -169,7 +169,7 @@ function worker() {
 	
 	//Reference=965672
 	//https://www.immigration.govt.nz/WorkingHoliday/Wizard/Personal1.aspx?ApplicationId=965672&IndividualType=Primary&IndividualIndex=1
-	route("Personal1.aspx", fillPersonal1($));
+	route("Personal1.aspx", fillPersonal1);
 	//https://www.immigration.govt.nz/WorkingHoliday/Wizard/Personal2.aspx?ApplicationId=965672&IndividualType=Primary&IndividualIndex=1
 	route("Personal2.aspx", fillPersonal2);
 	//https://www.immigration.govt.nz/WorkingHoliday/Wizard/Personal3.aspx?ApplicationId=965672&IndividualType=Primary&IndividualIndex=1
@@ -188,4 +188,4 @@ function worker() {
 	route("", applyQuota);
 };
 
-nzvaaQuery(worker, true);
+nzvaaQuery(worker($,window), true);
